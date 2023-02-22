@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="left: 10%; right: 10%; flex-direction: row; height: 30%; width: 80%; top: 35%; align-items: center; justify-content: flex-start;">
+        <ui:Button text="Card1" display-tooltip-when-elided="true" name="Card1" style="position: absolute; flex-direction: row; opacity: 1; width: 100px; height: 150px; left: 33%;" />
+        <ui:Button text="Card2" display-tooltip-when-elided="true" name="Card2" style="position: absolute; flex-direction: row; opacity: 1; align-items: stretch; width: 100px; height: 150px; left: 45%;" />
+        <ui:Button text="Card3" display-tooltip-when-elided="true" name="Card3" style="position: absolute; flex-direction: row; opacity: 1; align-items: stretch; width: 100px; height: 150px; left: 57%;" />
+    </ui:VisualElement>
+</ui:UXML>
