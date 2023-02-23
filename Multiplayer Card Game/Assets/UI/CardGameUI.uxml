@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/CardGameUI.uss?fileID=7433441132597879392&amp;guid=52be43a98226acf428862fa2992be39c&amp;type=3#CardGameUI" />
+    <ui:VisualElement name="Background" style="height: 700px; background-image: none; background-color: rgb(82, 82, 82);" />
     <ui:Label text="Testing UI Toolkit" display-tooltip-when-elided="true" name="Label1" class="header" style="font-size: 20px; position: absolute; left: 1%; top: 1%; right: initial; bottom: initial; width: 175px;" />
     <ui:Label text="Other Label" display-tooltip-when-elided="true" enable-rich-text="false" name="Label2" class="header" style="left: initial; top: 1%; right: 1%; bottom: initial; flex-basis: auto; width: 175px; max-width: none; position: absolute; -unity-text-align: middle-right;" />
 </ui:UXML>
