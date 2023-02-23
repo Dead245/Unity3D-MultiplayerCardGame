@@ -20,6 +20,8 @@ public class ButtonHandler : MonoBehaviour
 
     public void Awake()
     {
+        NetworkManagerUI.TurnOff += (() => { gameObject.SetActive(false); });
+
         var rootElement = uiDoc.rootVisualElement;
         serverBtn = rootElement.Query<Button>("Button2");
         hostBtn = rootElement.Query<Button>("Button1");

@@ -1,7 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="ButtonHolder" style="left: 10%; right: 10%; flex-direction: row; height: 30%; width: 80%; top: 5%; align-items: center; justify-content: flex-start; bottom: auto;">
-        <ui:Button text="Card1" display-tooltip-when-elided="true" name="Card1" style="position: absolute; flex-direction: row; opacity: 1; width: 100px; height: 150px; left: 33%;" />
-        <ui:Button text="Card2" display-tooltip-when-elided="true" name="Card2" style="position: absolute; flex-direction: row; opacity: 1; align-items: stretch; width: 100px; height: 150px; left: 45%;" />
-        <ui:Button text="Card3" display-tooltip-when-elided="true" name="Card3" style="position: absolute; flex-direction: row; opacity: 1; align-items: stretch; width: 100px; height: 150px; left: 57%;" />
+    <ui:VisualElement style="width: 100%; height: 100%; align-items: center; justify-content: flex-start;">
+        <ui:GroupBox style="flex-direction: row; align-items: center; justify-content: center; width: 80%;">
+            <ui:Button text="EnemyCard1" display-tooltip-when-elided="true" name="EnemyCard1" style="width: 100px; height: 150px;" />
+            <ui:Button text="EnemyCard2" display-tooltip-when-elided="true" name="EnemyCard2" style="width: 100px; height: 150px;" />
+            <ui:Button text="EnemyCard3" display-tooltip-when-elided="true" name="EnemyCard3" style="width: 100px; height: 150px;" />
+        </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>
