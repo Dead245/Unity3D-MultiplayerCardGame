@@ -8,22 +8,29 @@ public class NetworkManagerUI : MonoBehaviour
     public delegate void TurnOffButtons();
     public static event TurnOffButtons TurnOff;
 
-    public void Awake() {
+    void OnEnable() {
         ButtonHandler.StartServer += ServerStart;
         ButtonHandler.StartHost += HostStart;
         ButtonHandler.StartClient += ClientStart;
     }
 
+    private void OnDisable()
+    {
+        ButtonHandler.StartServer -= ServerStart;
+        ButtonHandler.StartHost -= HostStart;
+        ButtonHandler.StartClient -= ClientStart;
+    }
+
     void ServerStart() { 
-        TurnOff();
+        TurnOff?.Invoke();
         NetworkManager.Singleton.StartServer();
     }
     void HostStart() { 
-        TurnOff();
+        TurnOff?.Invoke();
         NetworkManager.Singleton.StartHost();
     }
     void ClientStart() { 
-        TurnOff();
+        TurnOff?.Invoke();
         NetworkManager.Singleton.StartClient();
 
     }

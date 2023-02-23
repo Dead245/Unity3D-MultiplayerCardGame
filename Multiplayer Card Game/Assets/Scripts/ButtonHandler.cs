@@ -18,28 +18,32 @@ public class ButtonHandler : MonoBehaviour
     public delegate void StartClientAction();
     public static event StartServerAction StartClient;
 
-    public void Awake()
+    private void OnEnable()
     {
         NetworkManagerUI.TurnOff += (() => { gameObject.SetActive(false); });
+    }
+    private void OnDisable()
+    {
+        NetworkManagerUI.TurnOff -= (() => { gameObject.SetActive(false); });
 
+    }
+    public void Awake()
+    {
         var rootElement = uiDoc.rootVisualElement;
         serverBtn = rootElement.Query<Button>("Button2");
         hostBtn = rootElement.Query<Button>("Button1");
         clientBtn = rootElement.Query<Button>("Button3");
 
         serverBtn.clicked += (() => {
-            if(StartServer != null)
-               StartServer();
+            StartServer?.Invoke();
         });
 
         hostBtn.clicked += (() => {
-            if (StartHost != null)
-                StartHost();
+                StartHost?.Invoke();
         });
 
         clientBtn.clicked += (() => {
-            if (StartClient != null)
-                StartClient();
+                StartClient?.Invoke();
         });
 
     }
