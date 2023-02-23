@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UIElements;
@@ -10,6 +9,15 @@ public class ButtonHandler : MonoBehaviour
     [SerializeField] private UIDocument uiDoc;
     public Button serverBtn, hostBtn, clientBtn;
 
+    public delegate void StartServerAction();
+    public static event StartServerAction StartServer;
+
+    public delegate void StartHostAction();
+    public static event StartHostAction StartHost;
+
+    public delegate void StartClientAction();
+    public static event StartServerAction StartClient;
+
     public void Awake()
     {
         var rootElement = uiDoc.rootVisualElement;
@@ -18,18 +26,18 @@ public class ButtonHandler : MonoBehaviour
         clientBtn = rootElement.Query<Button>("Button3");
 
         serverBtn.clicked += (() => {
-            NetworkManager.Singleton.StartServer();
-            print("Server Started");
+            if(StartServer != null)
+               StartServer();
         });
 
         hostBtn.clicked += (() => {
-            NetworkManager.Singleton.StartHost();
-            print("Host Started");
+            if (StartHost != null)
+                StartHost();
         });
 
         clientBtn.clicked += (() => {
-            NetworkManager.Singleton.StartClient();
-            print("Client Started");
+            if (StartClient != null)
+                StartClient();
         });
 
     }
