@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject mainHand;
+    [SerializeField] GameObject mainHand, enemyHand;
     private void OnEnable()
     {
         NetworkManagerUI.StartGame += toggleMainHand;
@@ -25,5 +25,9 @@ public class GameManager : MonoBehaviour
 
     void toggleMainHand() { 
         mainHand.SetActive(!mainHand.activeInHierarchy);
+    }
+
+    void toggleEnemyHand() { 
+        enemyHand.SetActive(!enemyHand.activeInHierarchy);
     }
 }
