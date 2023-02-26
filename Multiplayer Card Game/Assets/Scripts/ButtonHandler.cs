@@ -9,28 +9,28 @@ public class ButtonHandler : MonoBehaviour
     [SerializeField] private UIDocument uiDoc;
     public Button serverBtn, hostBtn, clientBtn;
 
-    public delegate void StartServerAction();
-    public static event StartServerAction StartServer;
+    public delegate void doStartServer();
+    public static event doStartServer StartServer;
 
-    public delegate void StartHostAction();
-    public static event StartHostAction StartHost;
+    public delegate void doStartHost();
+    public static event doStartHost StartHost;
 
-    public delegate void StartClientAction();
-    public static event StartServerAction StartClient;
+    public delegate void doStartClient();
+    public static event doStartClient StartClient;
 
     private void OnEnable()
     {
-        NetworkManagerUI.TurnOff += (() => { gameObject.SetActive(false); });
+        NetworkManagerUI.StartGame += toggleNetworkButtons;
     }
     private void OnDisable()
     {
-        NetworkManagerUI.TurnOff -= (() => { gameObject.SetActive(false); });
+        NetworkManagerUI.StartGame -= toggleNetworkButtons;
 
     }
     public void Awake()
     {
         var rootElement = uiDoc.rootVisualElement;
-        serverBtn = rootElement.Query<Button>("Button2");
+        serverBtn = rootElement.Query<Button>("Button2"); //Horrible names, I know
         hostBtn = rootElement.Query<Button>("Button1");
         clientBtn = rootElement.Query<Button>("Button3");
 
@@ -39,12 +39,16 @@ public class ButtonHandler : MonoBehaviour
         });
 
         hostBtn.clicked += (() => {
-                StartHost?.Invoke();
+            StartHost?.Invoke();
         });
 
         clientBtn.clicked += (() => {
-                StartClient?.Invoke();
+            StartClient?.Invoke();
         });
 
+    }
+
+    void toggleNetworkButtons() {
+        gameObject.SetActive(!gameObject.activeInHierarchy);
     }
 }
