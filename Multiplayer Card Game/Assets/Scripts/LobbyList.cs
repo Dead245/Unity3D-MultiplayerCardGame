@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Unity.Netcode;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class LobbyList : NetworkBehaviour, INetworkSerializable
@@ -11,6 +15,8 @@ public class LobbyList : NetworkBehaviour, INetworkSerializable
     public VisualElement playerLabelHolder;
     List<Label> playerLabelList = new();
     Label playerLabel;
+
+    private NetworkVariable<int> playerLabelName = new NetworkVariable<int>(-1,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
 
     
 
@@ -36,6 +42,7 @@ public class LobbyList : NetworkBehaviour, INetworkSerializable
         if (Input.GetKeyDown(KeyCode.H))
         {
             playerLabelHolder.Clear();
+            Debug.Log(playerLabelName);
             playerLabelList.ForEach(item => {
                 playerLabelHolder.Add(item);
             });
@@ -49,12 +56,14 @@ public class LobbyList : NetworkBehaviour, INetworkSerializable
 
     private void StartLobby(Label playerName)
     {
-        playerName.text = "Host: " + OwnerClientId;
+        playerLabelName.Value = 1;
+        playerName.text = "Host: " + playerLabelName.Value;
         playerLabelList.Add(playerName);
     }
     private void JoinLobby(Label playerName)
     {
-        playerName.text = "Client: " + OwnerClientId;
+        playerLabelName.Value = 2;
+        playerName.text = "Client: " + playerLabelName.Value;
         playerLabelList.Add(playerName);
     }
 
