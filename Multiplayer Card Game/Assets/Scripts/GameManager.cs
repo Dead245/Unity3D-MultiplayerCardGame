@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject mainHand, enemyHand;
     private void OnEnable()
     {
-        NetworkManagerUI.StartGame += toggleMainHand;
+        
     }
 
     //Would the main Game Manager ever be disabled?
     private void OnDisable()
     {
-        NetworkManagerUI.StartGame -= toggleMainHand;
+        
     }
 
     // Start is called before the first frame update
