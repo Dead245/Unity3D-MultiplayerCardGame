@@ -8,7 +8,7 @@ public class PlayerNetworkScript : NetworkBehaviour
 
     private NetworkVariable<int> playerLabelID = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-    public override void OnNetworkSpawn() //Do subscribe events on this function instead of Awake()
+    public override void OnNetworkSpawn() //Do subscribe events on this function inside of NetworkObjects instead of Awake()
     {
         playerLabelID.OnValueChanged += (int prevValue, int newValue) => { 
             Debug.Log("!!!!! " + OwnerClientId + ": " + playerLabelID.Value);
