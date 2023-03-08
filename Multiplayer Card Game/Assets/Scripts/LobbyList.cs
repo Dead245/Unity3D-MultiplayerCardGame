@@ -35,20 +35,6 @@ public class LobbyList : NetworkBehaviour, INetworkSerializable
 
     }
 
-    private void Update()
-    {
-        if (!IsOwner) return;
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            playerLabelHolder.Clear();
-            Debug.Log(playerLabelName);
-            playerLabelList.ForEach(item => {
-                playerLabelHolder.Add(item);
-            });
-        }
-    }
-
     private void StartServer()
     {
         throw new System.NotImplementedException();
